@@ -1,5 +1,6 @@
 const path = require("path"); // Nos permite acceder a donde estámos dentro de las carpetas, ya sea en local o en la nube.
 const HtmlWebpackPlugin = require("html-webpack-plugin"); //Permite trabajar con los archivos HTML
+const CopyWebpackPlugin = require("copy-webpack-plugin"); // Permite copiar los estilos hacía la carpeta dist.
 
 /* Objeto donde vive la configuración de Webpack */
 module.exports = {
@@ -44,5 +45,13 @@ module.exports = {
             filename: "./index.html", //El nombre que tendrá el archivo final en la carpeta dist
             }
         ),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: "./src/styles/styles.css",
+                    to: "",
+                },
+            ],
+        }),
     ],
 }
